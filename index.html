@@ -10,27 +10,23 @@
 <style>
 /* Layout: one narrow site-sheet column — inputs grouped as Room size / Rates, quote sheet below like a printed docket */
 :root{
-  --bg:#f3f5f8;
-  --surface:#ffffff;
-  --ink:#16202e;
-  --muted:#5b6778;
-  --line:#dde3ec;
-  --field:#eef2f7;
-  --accent:#2563eb;
-  --accent-ink:#ffffff;
-  --accent-soft:#e3ecfd;
-  --ok:#0f7a4a;
+  --bg:#0a0908;
+  --surface:#161210;
+  --ink:#f5f1ec;
+  --muted:#9a8f85;
+  --line:#2e2621;
+  --field:#1d1815;
+  --accent:#ff6a2b;
+  --accent-ink:#1a0d06;
+  --accent-soft:rgba(255,106,43,.14);
+  --ok:#3ddc8c;
   --font-body:"IBM Plex Sans","Noto Sans SC",system-ui,-apple-system,"PingFang SC",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#0f141c;--surface:#171e29;--ink:#e7ecf3;--muted:#98a4b5;--line:#2a3443;--field:#202938;
-  --accent:#6b9dff;--accent-ink:#0b1220;--accent-soft:#1c2b48;--ok:#4cc38a;color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#0f141c;--surface:#171e29;--ink:#e7ecf3;--muted:#98a4b5;--line:#2a3443;--field:#202938;
-  --accent:#6b9dff;--accent-ink:#0b1220;--accent-soft:#1c2b48;--ok:#4cc38a;color-scheme:dark}
 
 *{box-sizing:border-box}
+html{background:var(--bg)}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:15px;line-height:1.5;margin:0}
 .wrap{max-width:560px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:flex;flex-direction:column;gap:16px}
 
