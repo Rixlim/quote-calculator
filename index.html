@@ -106,7 +106,28 @@ footer{font-size:.78rem;color:var(--muted);text-align:center}
         <input type="number" id="openings" inputmode="decimal" min="0" step="0.01" value="3"></label>
       <label><span><span data-i18n="waste">Waste allowance</span> <span class="unit">(%)</span></span>
         <input type="number" id="waste" inputmode="decimal" min="0" step="1" value="10"></label>
+      <label><span><span data-i18n="wet">wet</span> <span class="unit">(m²)</span></span>
+        <input type="number" id="wet" inputmode="decimal" min="0" step="0.01" value="8"></label>
     </div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-ext">
+    <h2 id="h-ext" data-i18n="extTitle">Outside of building</h2>
+    <div class="grid">
+      <label><span><span data-i18n="extPerim">extPerim</span> <span class="unit">(m)</span></span>
+        <input type="number" id="ext-perim" inputmode="decimal" min="0" step="0.01" value="36"></label>
+      <label><span><span data-i18n="extHeight">extHeight</span> <span class="unit">(m)</span></span>
+        <input type="number" id="ext-height" inputmode="decimal" min="0" step="0.01" value="2.7"></label>
+      <label><span><span data-i18n="extOpen">extOpen</span> <span class="unit">(m²)</span></span>
+        <input type="number" id="ext-open" inputmode="decimal" min="0" step="0.01" value="10"></label>
+      <label><span><span data-i18n="gableBase">gableBase</span> <span class="unit">(m)</span></span>
+        <input type="number" id="gable-base" inputmode="decimal" min="0" step="0.01" value="8"></label>
+      <label><span><span data-i18n="gableHeight">gableHeight</span> <span class="unit">(m)</span></span>
+        <input type="number" id="gable-height" inputmode="decimal" min="0" step="0.01" value="2"></label>
+      <label><span><span data-i18n="gableCount">gableCount</span> <span class="unit">(pcs)</span></span>
+        <input type="number" id="gable-count" inputmode="decimal" min="0" step="1" value="2"></label>
+    </div>
+    <p class="hint" data-i18n="extHint">x</p>
   </section>
 
   <section class="panel" aria-labelledby="h-rates">
@@ -144,7 +165,7 @@ footer{font-size:.78rem;color:var(--muted);text-align:center}
     </div>
     <dl class="totals">
       <dt data-i18n="subtotal">Subtotal (ex GST)</dt><dd id="subtotal"></dd>
-      <dt data-i18n="gst">GST 8%</dt><dd id="gst"></dd>
+      <dt data-i18n="gst">GST 10%</dt><dd id="gst"></dd>
       <dt class="grand" data-i18n="total">TOTAL (inc GST)</dt><dd class="grand" id="total"></dd>
     </dl>
     <div class="sheets">
@@ -165,8 +186,8 @@ footer{font-size:.78rem;color:var(--muted);text-align:center}
 
 <script>
 const T = {
-  en:{title:"Building Quote Calculator",subtitle:"Flooring, plasterboard, lining and painting by the square metre",room:"Room size",project:"Project / site",length:"Length",width:"Width",height:"Wall height",openings:"Doors & windows",waste:"Waste allowance",rates:"Rates (AUD per m², ex GST)",flooring:"Flooring",gyprock:"Gyprock / Plasterboard",interior:"Interior lining",exterior:"Exterior lining",painting:"Painting",hint:"Example rates shown. Set a rate to 0 to leave that trade off the quote.",quote:"Quote",item:"Item",area:"Area m²",rate:"Rate",amount:"Amount",subtotal:"Subtotal (ex GST)",gst:"GST 8%",total:"TOTAL (inc GST)",sheets:"Plasterboard to order (2400 × 1200, incl. waste)",copy:"Copy quote",clear:"Clear",copied:"Quote copied. Paste it into WeChat, email or a message.",copyFail:"Couldn't copy automatically. The text is selected below — copy it manually.",cleared:"Cleared. Enter new sizes and rates.",empty:"Enter room sizes and at least one rate above 0.",footer:"Areas use room dimensions: walls = perimeter × height − openings; ceiling = floor area. Check against drawings before issuing a quote.",wall:"walls",ceil:"walls + ceiling",floor:"floor",sheetsUnit:"sheets",date:"Date"},
-  zh:{title:"建筑报价计算器",subtitle:"按平方米计算地板、石膏板、内外墙衬板及油漆",room:"房间尺寸",project:"项目 / 工地",length:"长",width:"宽",height:"墙高",openings:"门窗面积",waste:"损耗率",rates:"单价（澳币 / m²，不含 GST）",flooring:"地板",gyprock:"石膏板 Gyprock",interior:"内墙衬板",exterior:"外墙衬板",painting:"油漆",hint:"目前是示例单价。单价填 0 表示该项目不报价。",quote:"报价单",item:"项目",area:"面积 m²",rate:"单价",amount:"金额",subtotal:"小计（不含 GST）",gst:"GST 8%",total:"总计（含 GST）",sheets:"石膏板订货数量（2400 × 1200，含损耗）",copy:"复制报价",clear:"清空",copied:"已复制报价，可直接贴到微信、邮件或短信。",copyFail:"无法自动复制，报价文字已在下方选中，请手动复制。",cleared:"已清空，请输入新的尺寸和单价。",empty:"请输入房间尺寸，并至少填一个大于 0 的单价。",footer:"面积按房间尺寸计算：墙面 = 周长 × 墙高 − 门窗；天花 = 地面面积。正式报价前请对照图纸核实。",wall:"墙面",ceil:"墙面 + 天花",floor:"地面",sheetsUnit:"张",date:"日期"}
+  en:{title:"Building Quote Calculator",subtitle:"Flooring, plasterboard, lining and painting by the square metre",room:"Room size",project:"Project / site",length:"Length",width:"Width",height:"Wall height",openings:"Doors & windows",waste:"Waste allowance",rates:"Rates (AUD per m², ex GST)",flooring:"Flooring",gyprock:"Gyprock / Plasterboard",interior:"Interior lining – wet areas",wet:"Wet area walls (bathroom, laundry)",extTitle:"Outside of building",extPerim:"Outside perimeter",extHeight:"Outside wall height",extOpen:"Outside doors & windows",gableBase:"Gable base",gableHeight:"Gable height",gableCount:"Number of gables",extHint:"Exterior = perimeter × height − openings + gables (½ × base × height). Use the whole building, not one room.",exterior:"Exterior lining",painting:"Painting",hint:"Example rates shown. Set a rate to 0 to leave that trade off the quote.",quote:"Quote",item:"Item",area:"Area m²",rate:"Rate",amount:"Amount",subtotal:"Subtotal (ex GST)",gst:"GST 10%",total:"TOTAL (inc GST)",sheets:"Plasterboard to order (2400 × 1200, incl. waste)",copy:"Copy quote",clear:"Clear",copied:"Quote copied. Paste it into WeChat, email or a message.",copyFail:"Couldn't copy automatically. The text is selected below — copy it manually.",cleared:"Cleared. Enter new sizes and rates.",empty:"Enter room sizes and at least one rate above 0.",footer:"Room: walls = perimeter × height − openings; ceiling = floor area. Gyprock covers walls + ceiling; wet-area lining is entered separately so walls are not charged twice. Waste is added to the sheet order, not the quoted area. Check against drawings before issuing a quote.",wall:"walls",ceil:"walls + ceiling",floor:"floor",sheetsUnit:"sheets",date:"Date"},
+  zh:{title:"建筑报价计算器",subtitle:"按平方米计算地板、石膏板、内外墙衬板及油漆",room:"房间尺寸",project:"项目 / 工地",length:"长",width:"宽",height:"墙高",openings:"门窗面积",waste:"损耗率",rates:"单价（澳币 / m²，不含 GST）",flooring:"地板",gyprock:"石膏板 Gyprock",interior:"内墙衬板 – 湿区",wet:"湿区墙面（浴室、洗衣房）",extTitle:"建筑外墙",extPerim:"外墙周长",extHeight:"外墙高度",extOpen:"外墙门窗面积",gableBase:"山墙底宽",gableHeight:"山墙高度",gableCount:"山墙数量",extHint:"外墙 = 周长 × 高 − 门窗 + 山墙（½ × 底 × 高）。用整栋房子的尺寸，不是单个房间。",exterior:"外墙衬板",painting:"油漆",hint:"目前是示例单价。单价填 0 表示该项目不报价。",quote:"报价单",item:"项目",area:"面积 m²",rate:"单价",amount:"金额",subtotal:"小计（不含 GST）",gst:"GST 10%",total:"总计（含 GST）",sheets:"石膏板订货数量（2400 × 1200，含损耗）",copy:"复制报价",clear:"清空",copied:"已复制报价，可直接贴到微信、邮件或短信。",copyFail:"无法自动复制，报价文字已在下方选中，请手动复制。",cleared:"已清空，请输入新的尺寸和单价。",empty:"请输入房间尺寸，并至少填一个大于 0 的单价。",footer:"房间：墙面 = 周长 × 墙高 − 门窗；天花 = 地面面积。石膏板包含墙面 + 天花；湿区衬板单独输入，避免墙面重复收费。损耗只加在订板数量，不加在报价面积。正式报价前请对照图纸核实。",wall:"墙面",ceil:"墙面 + 天花",floor:"地面",sheetsUnit:"张",date:"日期"}
 };
 let lang = "en";
 try{ const s = localStorage.getItem("bqc-lang"); if(s==="zh"||s==="en") lang = s; }catch(e){}
@@ -184,16 +205,20 @@ function compute(){
   const floor = L*W, ceiling = L*W;
   const walls = Math.max(0, 2*(L+W)*H - open);
   const gyprock = walls + ceiling, paint = walls + ceiling;
+  // Exterior: whole-building perimeter x height - openings + gable triangles (1/2 x base x height)
+  const gables = num("gable-count") * 0.5 * num("gable-base") * num("gable-height");
+  const exterior = Math.max(0, num("ext-perim")*num("ext-height") - num("ext-open")) + gables;
+  const wet = num("wet");
   const sheets = gyprock > 0 ? Math.ceil(gyprock*waste/2.88 - 1e-9) : 0;
   const items = [
     {k:"flooring", area:floor, rate:num("r-flooring"), basis:"floor"},
     {k:"gyprock", area:gyprock, rate:num("r-gyprock"), basis:"ceil"},
-    {k:"interior", area:walls, rate:num("r-interior"), basis:"wall"},
-    {k:"exterior", area:walls, rate:num("r-exterior"), basis:"wall"},
+    {k:"interior", area:wet, rate:num("r-interior"), basis:"wall"},
+    {k:"exterior", area:exterior, rate:num("r-exterior"), basis:"wall"},
     {k:"painting", area:paint, rate:num("r-painting"), basis:"ceil"}
   ].filter(i => i.rate > 0 && i.area > 0).map(i => ({...i, cost:r2(i.area*i.rate)}));
   const subtotal = r2(items.reduce((s,i)=>s+i.cost,0));
-  const gst = r2(subtotal*0.08);
+  const gst = r2(subtotal*0.10);
   return {items, subtotal, gst, total:r2(subtotal+gst), sheets};
 }
 
@@ -253,7 +278,7 @@ $("copy").addEventListener("click", ()=>{
   }catch(e){ fallback(); }
 });
 $("clear").addEventListener("click", ()=>{
-  ["project","length","width","height","openings","r-flooring","r-gyprock","r-interior","r-exterior","r-painting"].forEach(id => $(id).value = "");
+  ["project","length","width","height","openings","r-flooring","r-gyprock","r-interior","r-exterior","r-painting","wet","ext-perim","ext-height","ext-open","gable-base","gable-height","gable-count"].forEach(id => $(id).value = "");
   $("waste").value = "10"; $("copybox").hidden = true;
   render(); toast(T[lang].cleared); $("length").focus();
 });
